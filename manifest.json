@@ -4,8 +4,11 @@
 	"version": "0.0.0.1",
 	"content_scripts":[
 		{
-			"matches": ["https://web.whatsapp.com/*"],
-			"js": ["content_script.js"]
+			"matches": [
+				"http://web.whatsapp.com/*",
+				"https://web.whatsapp.com/*"
+			],
+			"js": ["assets/js/content_script.js"]
 		}
 	]
 }

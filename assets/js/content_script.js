@@ -1,6 +1,24 @@
 var allowed_emoticons = [];
 
-allowed_emoticons[":)"]=["😊"];
+// reference : http://emojipedia.org/apple/
+allowed_emoticons = {
+	":)"		: "🙂",
+	";)"		: "😉",
+	":("		: "☹",
+	":D"		: "😄",
+	"-_-"		: "😑",
+	":|"		: "😐",
+	":/"		: "😕",
+	":\\"		: "😕",
+	":poop:"	: "💩",
+	"\\m/"		: "🤘",
+	"xD"		: "😆",
+	":P"		: "😜",
+	"xP"		: "😝",
+	":*"		: "😘",
+	":o"		: "😮",
+	":O"		: "😯",
+}
 
 // reference : http://stackoverflow.com/a/3866442
 function setEndOfContenteditable(contentEditableElement){
@@ -13,7 +31,7 @@ function setEndOfContenteditable(contentEditableElement){
 	selection.addRange(range);//make the range you have just created the visible selection
 }
 
-document.addEventListener('keyup', function (e) { 
+document.addEventListener('keydown', function (e) { 
 	var input_div = document.activeElement;
 	if (input_div.tagName == "DIV" && input_div.className == "input")
 		replaceEmoticons(input_div)
@@ -24,7 +42,7 @@ function replaceEmoticons(container){
 	for (var icon in allowed_emoticons)
 		if (container.innerHTML.indexOf(icon)>-1){
 			flag = true;
-			container.innerHTML = container.innerHTML.replace(icon,allowed_emoticons[icon][0]);
+			container.innerHTML = container.innerHTML.replace(icon,allowed_emoticons[icon]);
 		}
 
 	if(flag)
