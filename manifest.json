@@ -23,7 +23,10 @@
 				"http://web.whatsapp.com/*",
 				"https://web.whatsapp.com/*"
 			],
-			"js": ["assets/js/content_script.js"]
+			"js": [
+				"assets/js/jquery.min.js",
+				"assets/js/content_script.js"
+			]
 		}
 	]
 }

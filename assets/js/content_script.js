@@ -18,7 +18,8 @@ allowed_emoticons = {
 	":*"		: "😘",
 	":o"		: "😮",
 	":O"		: "😯",
-}
+	":=D"		: "😂"
+};
 
 // reference : http://stackoverflow.com/a/3866442
 function setEndOfContenteditable(contentEditableElement){
@@ -31,10 +32,16 @@ function setEndOfContenteditable(contentEditableElement){
 	selection.addRange(range);//make the range you have just created the visible selection
 }
 
-document.addEventListener('keydown', function (e) { 
+document.addEventListener("click", function (event) {
+	if ($("h2").length && $(".suggestions").length == 0) {
+		$("h2").append("<div class=\"suggestions\"></div>");
+	}
+});
+
+document.addEventListener('keydown', function (e) {
 	var input_div = document.activeElement;
 	if (input_div.tagName == "DIV" && input_div.className == "input")
-		replaceEmoticons(input_div)
+		replaceEmoticons(input_div);
 });
 
 function replaceEmoticons(container){
@@ -43,9 +50,11 @@ function replaceEmoticons(container){
 		if (container.innerHTML.indexOf(icon)>-1){
 			flag = true;
 			container.innerHTML = container.innerHTML.replace(icon,allowed_emoticons[icon]);
+			$(".suggestions").html(icon + " = " + allowed_emoticons[icon]);
 		}
 
-	if(flag)
+	if(flag) {
 		setEndOfContenteditable(container);
+	}
 	return flag;
 }
