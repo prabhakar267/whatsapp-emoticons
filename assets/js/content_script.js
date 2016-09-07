@@ -3,9 +3,9 @@ var allowed_emoticons = [];
 // reference : http://emojipedia.org/apple/
 allowed_emoticons = {
 	":)"		: "🙂",
+	":D"		: "😄",
 	";)"		: "😉",
 	":("		: "☹",
-	":D"		: "😄",
 	"-_-"		: "😑",
 	":|"		: "😐",
 	":/"		: "😕",
@@ -17,8 +17,7 @@ allowed_emoticons = {
 	"xP"		: "😝",
 	":*"		: "😘",
 	":o"		: "😮",
-	":O"		: "😯",
-	":=D"		: "😂"
+	":O"		: "😯"
 };
 
 // reference : http://stackoverflow.com/a/3866442
