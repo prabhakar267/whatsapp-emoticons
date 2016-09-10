@@ -1,4 +1,9 @@
 var allowed_emoticons = [];
+var happy = [];
+var sad = [];
+var fun = [];
+var suggestions = [];
+var index = -1;
 
 // reference : http://emojipedia.org/apple/
 allowed_emoticons = {
@@ -17,8 +22,30 @@ allowed_emoticons = {
 	"xP"		: "😝",
 	":*"		: "😘",
 	":o"		: "😮",
-	":O"		: "😯"
+	":O"		: "😯",
+	";|"		: "😒"
 };
+
+happy = {
+	":)"		: "🙂",
+	":D"		: "😄",
+	";)"		: "😉",
+	"xD"		: "😆"
+};
+
+sad = {
+	":("		: "☹",
+	":|"		: "😐",
+	":/"		: "😕",
+	";|"		: "😒"
+}
+
+fun = {
+	":poop:"	: "💩",
+	"\\m/"		: "🤘",
+	":o"		: "😮",
+	":O"		: "😯"
+}
 
 // reference : http://stackoverflow.com/a/3866442
 function setEndOfContenteditable(contentEditableElement){
@@ -29,6 +56,10 @@ function setEndOfContenteditable(contentEditableElement){
 	selection = window.getSelection();//get the selection object (allows you to change selection)
 	selection.removeAllRanges();//remove any selections already made
 	selection.addRange(range);//make the range you have just created the visible selection
+}
+
+function displaySuggestion(suggest, ind) {
+	$(".suggestions").html(icon + " = " + allowed_emoticons[icon]);
 }
 
 document.addEventListener("click", function (event) {
@@ -49,7 +80,17 @@ function replaceEmoticons(container){
 		if (container.innerHTML.indexOf(icon)>-1){
 			flag = true;
 			container.innerHTML = container.innerHTML.replace(icon,allowed_emoticons[icon]);
-			$(".suggestions").html(icon + " = " + allowed_emoticons[icon]);
+			if (happy.indexOf(icon)>-1) {
+				suggestions = happy;
+				index = happy.indexOf(icon);
+			} else if (sad.indexOf(icon)>-1) {
+				suggestions = sad;
+				index = sad.indexOf(icon);
+			} else if (fun.indexOf(icon)>-1) {
+				suggestions = fun;
+				index = fun.indexOf(icon);
+			}
+			displaySuggestion()
 		}
 
 	if(flag) {
