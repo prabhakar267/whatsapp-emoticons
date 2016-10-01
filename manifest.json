@@ -2,7 +2,7 @@
 	"manifest_version": 2,
 	"name": "WhatsApp Emoticons",
 	"description": "Tool to convert text smileys to WhatsApp Emoticons to make life simple while using WhatsApp Web",
-	"version": "0.0.0.1",
+	"version": "0.0.0.2",
 	"author": "Prabhakar Gupta",
 	"homepage_url": "https://github.com/prabhakar267/whatsapp-emoticon/",
 
